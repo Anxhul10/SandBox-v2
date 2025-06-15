@@ -1,6 +1,7 @@
 {
   "name": "frog.loki",
   "version": "1.0.0",
+  "type": "commonjs",
   "description": "A ui library with simple components ",
   "main": "index.js",
   "repository": "https://github.com/Anxhul10/SandBox-v2/tree/main/packages",
