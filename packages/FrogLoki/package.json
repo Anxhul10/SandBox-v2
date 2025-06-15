@@ -7,5 +7,15 @@
   "repository": "https://github.com/Anxhul10/SandBox-v2/tree/main/packages",
   "author": "Anshul",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "@storybook/addon-docs": "^9.0.10",
+    "@storybook/addon-webpack5-compiler-swc": "^3.0.0",
+    "@storybook/react-webpack5": "^9.0.10",
+    "storybook": "^9.0.10"
+  },
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  }
 }
