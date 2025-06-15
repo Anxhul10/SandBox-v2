@@ -1,0 +1,10 @@
+{
+  "name": "FrogLoki",
+  "version": "1.0.0",
+  "description": "A ui library with simple components ",
+  "main": "index.js",
+  "repository": "https://github.com/Anxhul10/SandBox-v2/tree/main/packages",
+  "author": "Anshul",
+  "license": "MIT",
+  "private": false
+}
