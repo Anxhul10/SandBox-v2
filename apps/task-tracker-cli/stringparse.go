@@ -13,10 +13,19 @@ type Window struct {
     X int `json:"x"`
     Y int `json:"y"`
 }
+
 type Config struct {
     Timeout float32 `json:"timeout"`
     PluginsPath string `json:"pluginsPath"`
     Window Window `json:"window"`
+}
+
+func createJSON(key int, value string) {
+	myData := map[int] string {
+		key:value,
+	}
+	marshalData, _ := json.Marshal(myData)
+    os.WriteFile("config.json", marshalData, 0644)
 }
 
 func main() {
@@ -46,23 +55,6 @@ func main() {
 		fmt.Printf(*items_to_add)
 	}
 
-	fileCount := map[string]int{
-        "cpp": 10,
-        "js": 8,
-        "go": 10,
-    }
-    bytes, _ := json.Marshal(fileCount)
-    fmt.Println(string(bytes))
-
-
-	// write to file
-	//  config := Config {
-    //     Timeout: 40.420,
-    //     PluginsPath: "~/plugins/etc",
-    //     Window: Window {500, 200, 20, 20},
-    // }
-    // bytes, _ := json.MarshalIndent(config, "", "  ")
-    os.WriteFile("config.json", bytes, 0644)
-
+	createJSON(2, "nig")
     // fmt.Printf("textPtr: %s, metricPtr: %s, uniquePtr: %t\n", *items_to_add, *metricPtr, *uniquePtr)
 }
