@@ -3,7 +3,7 @@ package main
 import (
     "flag"
     "fmt"
-	"io/ioutil"
+	"os"
     "encoding/json"
 )
 
@@ -62,7 +62,7 @@ func main() {
     //     Window: Window {500, 200, 20, 20},
     // }
     // bytes, _ := json.MarshalIndent(config, "", "  ")
-    ioutil.WriteFile("config.json", bytes, 0644)
+    os.WriteFile("config.json", bytes, 0644)
 
     // fmt.Printf("textPtr: %s, metricPtr: %s, uniquePtr: %t\n", *items_to_add, *metricPtr, *uniquePtr)
 }
