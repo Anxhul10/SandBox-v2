@@ -17,6 +17,15 @@ func main() {
 	list_todo := flag.Bool("list todo", false, "list todo")
 	list_in_progress := flag.Bool("list progress", false, "list progress")
 
+	_ = update_id
+	_ = delete_id
+	_ = progress_id
+	_ = complete_id
+	_ = list_add
+	_ = list_done
+	_ = list_todo
+	_ = list_in_progress
+
     metricPtr := flag.String("metric", "chars", "Metric {chars|words|lines};.")
     uniquePtr := flag.Bool("unique", false, "Measure unique values of a metric.")
     flag.Parse()
