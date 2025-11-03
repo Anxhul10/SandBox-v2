@@ -52,9 +52,30 @@ func main() {
     flag.Parse()
 
 	if *items_to_add != "" {
-		fmt.Printf(*items_to_add)
+		// fmt.Printf(*items_to_add)
 	}
 
-	createJSON(2, "nig")
+	// createJSON(2, "nig")
+
+	bytes, err := os.ReadFile("data.json")
+
+	_ = bytes
+
+	if err != nil {
+		// create json
+		// return 
+		createJSON(0,"temp")
+		return
+	}
+
+	config := Config {
+        Timeout: 40.420,
+        PluginsPath: "~/plugins/etc",
+        Window: Window {500, 200, 20, 20},
+    }
+    tyes, _ := json.MarshalIndent(config, "", "  ")
+    os.WriteFile("config.json", tyes, 0644)
+
+	fmt.Print(string(tyes))
     // fmt.Printf("textPtr: %s, metricPtr: %s, uniquePtr: %t\n", *items_to_add, *metricPtr, *uniquePtr)
 }
