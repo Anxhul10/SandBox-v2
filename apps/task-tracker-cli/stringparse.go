@@ -25,7 +25,7 @@ func createJSON(key int, value string) {
 		key:value,
 	}
 	marshalData, _ := json.Marshal(myData)
-    os.WriteFile("config.json", marshalData, 0644)
+    os.WriteFile("data.json", marshalData, 0644)
 }
 
 func main() {
