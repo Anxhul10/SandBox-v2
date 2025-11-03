@@ -3,8 +3,21 @@ package main
 import (
     "flag"
     "fmt"
-    // "os"
+	"io/ioutil"
+    "encoding/json"
 )
+
+type Window struct {
+    Width int `json:"width"`
+    Height int `json:"height"`
+    X int `json:"x"`
+    Y int `json:"y"`
+}
+type Config struct {
+    Timeout float32 `json:"timeout"`
+    PluginsPath string `json:"pluginsPath"`
+    Window Window `json:"window"`
+}
 
 func main() {
     items_to_add := flag.String("add", "", "Text to parse. (Required)") // log the id of the item
@@ -26,14 +39,30 @@ func main() {
 	_ = list_todo
 	_ = list_in_progress
 
-    metricPtr := flag.String("metric", "chars", "Metric {chars|words|lines};.")
-    uniquePtr := flag.Bool("unique", false, "Measure unique values of a metric.")
+    
     flag.Parse()
 
-    // if *items_to_add == "" {
-    //     flag.PrintDefaults()
-    //     os.Exit(1)
-    // }
+	if *items_to_add != "" {
+		fmt.Printf(*items_to_add)
+	}
 
-    fmt.Printf("textPtr: %s, metricPtr: %s, uniquePtr: %t\n", *items_to_add, *metricPtr, *uniquePtr)
+	fileCount := map[string]int{
+        "cpp": 10,
+        "js": 8,
+        "go": 10,
+    }
+    bytes, _ := json.Marshal(fileCount)
+    fmt.Println(string(bytes))
+
+
+	// write to file
+	//  config := Config {
+    //     Timeout: 40.420,
+    //     PluginsPath: "~/plugins/etc",
+    //     Window: Window {500, 200, 20, 20},
+    // }
+    // bytes, _ := json.MarshalIndent(config, "", "  ")
+    ioutil.WriteFile("config.json", bytes, 0644)
+
+    // fmt.Printf("textPtr: %s, metricPtr: %s, uniquePtr: %t\n", *items_to_add, *metricPtr, *uniquePtr)
 }
