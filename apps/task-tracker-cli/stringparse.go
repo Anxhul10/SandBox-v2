@@ -38,6 +38,7 @@ func main() {
 	list_done := flag.Bool("list done", false, "list done ")
 	list_todo := flag.Bool("list todo", false, "list todo")
 	list_in_progress := flag.Bool("list progress", false, "list progress")
+	get_json := flag.Bool("json", false, "get json")
 
 	_ = update_id
 	_ = delete_id
@@ -47,6 +48,7 @@ func main() {
 	_ = list_done
 	_ = list_todo
 	_ = list_in_progress
+	_ = get_json
 
     
     flag.Parse()
