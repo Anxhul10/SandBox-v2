@@ -3,8 +3,39 @@ package main
 import (
     "flag"
     "fmt"
-    // "os"
+	"os"
+    "encoding/json"
 )
+// boilerplate for the task
+// {
+// 	"id":{
+// 		"title":"my title",
+// 		"description": "my description",
+// 		"status": "todo/in-progress/done",
+// 		"createdAt":"time of creation",
+// 		"updatedAt": "time of last update"
+// 	}
+// }
+type Window struct {
+    Width int `json:"width"`
+    Height int `json:"height"`
+    X int `json:"x"`
+    Y int `json:"y"`
+}
+
+type Config struct {
+    Timeout float32 `json:"timeout"`
+    PluginsPath string `json:"pluginsPath"`
+    Window Window `json:"window"`
+}
+
+func createJSON(key int, value string) {
+	myData := map[int] string {
+		key:value,
+	}
+	marshalData, _ := json.Marshal(myData)
+    os.WriteFile("data.json", marshalData, 0644)
+}
 
 func main() {
     items_to_add := flag.String("add", "", "Text to parse. (Required)") // log the id of the item
@@ -16,15 +47,48 @@ func main() {
 	list_done := flag.Bool("list done", false, "list done ")
 	list_todo := flag.Bool("list todo", false, "list todo")
 	list_in_progress := flag.Bool("list progress", false, "list progress")
+	get_json := flag.Bool("json", false, "get json")
 
-    metricPtr := flag.String("metric", "chars", "Metric {chars|words|lines};.")
-    uniquePtr := flag.Bool("unique", false, "Measure unique values of a metric.")
+	_ = update_id
+	_ = delete_id
+	_ = progress_id
+	_ = complete_id
+	_ = list_add
+	_ = list_done
+	_ = list_todo
+	_ = list_in_progress
+	_ = get_json
+
+    
     flag.Parse()
 
-    // if *items_to_add == "" {
-    //     flag.PrintDefaults()
-    //     os.Exit(1)
-    // }
+	if *items_to_add != "" {
+		// fmt.Printf(*items_to_add)
+		va := map[string]map[string]string {"first": {"name":"anshul"}}
+		fmt.Println(va)
+	}
 
-    fmt.Printf("textPtr: %s, metricPtr: %s, uniquePtr: %t\n", *items_to_add, *metricPtr, *uniquePtr)
+	// createJSON(2, "nig")
+
+	// bytes, err := os.ReadFile("data.json")
+
+	// _ = bytes
+
+	// if err != nil {
+	// 	// create json
+	// 	// return 
+	// 	createJSON(0,"temp")
+	// 	return
+	// }
+
+	// config := Config {
+    //     Timeout: 40.420,
+    //     PluginsPath: "~/plugins/etc",
+    //     Window: Window {500, 200, 20, 20},
+    // }
+    // tyes, _ := json.MarshalIndent(config, "", "  ")
+    // os.WriteFile("config.json", tyes, 0644)
+
+	// fmt.Print(string(tyes))
+    // fmt.Printf("textPtr: %s, metricPtr: %s, uniquePtr: %t\n", *items_to_add, *metricPtr, *uniquePtr)
 }
