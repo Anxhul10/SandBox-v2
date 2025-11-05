@@ -15,10 +15,6 @@ type Human struct {
     Address string
 }
 
-// Source - https://stackoverflow.com/questions/8757389/reading-a-file-line-by-line-in-go
-// Posted by zouying
-// Retrieved 2025-11-06, License - CC BY-SA 4.0
-
 func readFileLines(logfile string) {
     f, err := os.OpenFile(logfile, os.O_RDONLY, os.ModePerm)
     if err != nil {
