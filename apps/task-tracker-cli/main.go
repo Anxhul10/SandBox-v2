@@ -2,9 +2,10 @@ package main
 
 import (
     "flag"
-    "fmt"
-	"os"
-    "encoding/json"
+    _"fmt"
+	_"os"
+    _"encoding/json"
+	"github.com/Anxhul10/Sandbox-v2/apps/task-tracker-cli/misc"
 )
 // boilerplate for the task
 // {
@@ -16,26 +17,26 @@ import (
 // 		"updatedAt": "time of last update"
 // 	}
 // }
-type Window struct {
-    Width int `json:"width"`
-    Height int `json:"height"`
-    X int `json:"x"`
-    Y int `json:"y"`
-}
+// type Window struct {
+//     Width int `json:"width"`
+//     Height int `json:"height"`
+//     X int `json:"x"`
+//     Y int `json:"y"`
+// }
 
-type Config struct {
-    Timeout float32 `json:"timeout"`
-    PluginsPath string `json:"pluginsPath"`
-    Window Window `json:"window"`
-}
+// type Config struct {
+//     Timeout float32 `json:"timeout"`
+//     PluginsPath string `json:"pluginsPath"`
+//     Window Window `json:"window"`
+// }
 
-func createJSON(key int, value string) {
-	myData := map[int] string {
-		key:value,
-	}
-	marshalData, _ := json.Marshal(myData)
-    os.WriteFile("data.json", marshalData, 0644)
-}
+// func createJSON(key int, value string) {
+// 	myData := map[int] string {
+// 		key:value,
+// 	}
+// 	marshalData, _ := json.Marshal(myData)
+//     os.WriteFile("data.json", marshalData, 0644)
+// }
 
 func main() {
     items_to_add := flag.String("add", "", "Text to parse. (Required)") // log the id of the item
@@ -49,6 +50,7 @@ func main() {
 	list_in_progress := flag.Bool("list progress", false, "list progress")
 	get_json := flag.Bool("json", false, "get json")
 
+	_ = items_to_add
 	_ = update_id
 	_ = delete_id
 	_ = progress_id
@@ -62,11 +64,13 @@ func main() {
     
     flag.Parse()
 
-	if *items_to_add != "" {
-		// fmt.Printf(*items_to_add)
-		va := map[string]map[string]string {"first": {"name":"anshul"}}
-		fmt.Println(va)
-	}
+	misc.CreateTask("title1", "description1", "pending")
+
+	// if *items_to_add != "" {
+	// 	// fmt.Printf(*items_to_add)
+	// 	va := map[string]map[string]string {"first": {"name":"anshul"}}
+	// 	fmt.Println(va)
+	// }
 
 	// createJSON(2, "nig")
 
