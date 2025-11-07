@@ -64,7 +64,7 @@ func main() {
     
     flag.Parse()
 
-	misc.ReadWrite()
+	misc.CreateTask("title1", "description1", "pending")
 
 	// if *items_to_add != "" {
 	// 	// fmt.Printf(*items_to_add)
