@@ -64,8 +64,8 @@ func main() {
     
     flag.Parse()
 
-	misc.CreateTask("title1", "description1", "pending")
-
+	// misc.CreateTask("title1", "description1", "pending")
+	misc.RetriveTask(12)
 	// if *items_to_add != "" {
 	// 	// fmt.Printf(*items_to_add)
 	// 	va := map[string]map[string]string {"first": {"name":"anshul"}}
