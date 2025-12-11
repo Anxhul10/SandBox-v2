@@ -12,6 +12,9 @@ jobs:
           version: 10
       - name: install
         run: pnpm install
+        working-directory: apps/nextjs-dashboard
       - name: build
         run: pnpm build
+        working-directory: apps/nextjs-dashboard
+
   
