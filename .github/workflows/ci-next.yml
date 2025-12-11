@@ -1,8 +1,6 @@
 name: next build
 on: 
   push:
-    paths:
-      - apps/nextjs-dashboard/**
 jobs:
   build:
     runs-on: ubuntu-latest
