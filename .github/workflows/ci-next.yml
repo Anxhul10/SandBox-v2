@@ -3,6 +3,9 @@ on:
   push:
     paths:
       - 'apps/nextjs-dashboard/**'
+  pull_request:
+    paths:
+      - 'apps/nextjs-dashboard/**'
 jobs:
   build:
     runs-on: ubuntu-latest
